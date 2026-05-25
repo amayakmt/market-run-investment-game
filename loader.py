@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+from config import ETFS, STOCKS
 
 stocks_dir = Path("cache/stocks")
 etfs_dir = Path("cache/etfs")
@@ -34,3 +35,12 @@ def resample_weekly(ticker):
         )
     return df
     
+def get_game_data(start_date: str, weeks_to_add: int) -> dict:
+    game_data = {}
+    end_date = pd.to_datetime(start_date) + pd.Timedelta(weeks = weeks_to_add)
+    tickers = list(STOCKS) + list(ETFS)
+    for ticker in tickers:
+        df = resample_weekly(ticker)
+        df_slice = df.sort_index().loc[start_date:end_date]
+        game_data[ticker] = df_slice
+    return game_data

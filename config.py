@@ -4,7 +4,9 @@ FEE_RATE         = 0.0005
 GTC_EXPIRY_WEEKS = 3
 MAX_OPEN_ORDERS  = 10
 MAX_WATCHLIST    = 10
-DATA_END = "2020-12-31"
+DATA_END = "2025-12-31"
+DATA_START = "2008-03-19"
+DATA_START_MAX = "2023-12-24"
 
 GAME_LENGTHS = {
     "Sprint":   30,
@@ -33,11 +35,11 @@ STOCKS = {
     "JNJ": {"name": "Johnson & Johnson", "sector": "Healthcare", "available_from": "1962-01-02"},
     "UNH": {"name": "UnitedHealth Group", "sector": "Healthcare", "available_from": "1984-10-17"},
     "LLY": {"name": "Eli Lilly", "sector": "Healthcare", "available_from": "1972-06-01"},
-    "ABBV": {"name": "AbbVie Inc.", "sector": "Healthcare", "available_from": "2013-01-02"},
-    "TSLA": {"name": "Tesla Inc.", "sector": "Consumer Discretionary", "available_from": "2010-06-29"},
+    "PFE": {"name": "Pfizer Inc.", "sector": "Healthcare", "available_from": "1972-01-03"},
+    "NKE": {"name": "Nike Inc.", "sector": "Consumer Discretionary", "available_from": "1980-12-02"},
     "HD": {"name": "Home Depot", "sector": "Consumer Discretionary", "available_from": "1981-09-22"},
     "MCD": {"name": "McDonald's Corp.", "sector": "Consumer Discretionary", "available_from": "1966-07-05"},
-    "PG": {"name": "Procter & Gamble", "sector": "Consumer Discretionary", "available_from": "1962-01-02"},
+    "PG": {"name": "Procter & Gamble", "sector": "Consumer Staples", "available_from": "1962-01-02"},
     "COST": {"name": "Costco Wholesale", "sector": "Consumer Discretionary", "available_from": "1986-07-09"},
     "XOM": {"name": "Exxon Mobil", "sector": "Energy", "available_from": "1962-01-02"},
     "CVX": {"name": "Chevron Corp.", "sector": "Energy", "available_from": "1962-01-02"},
