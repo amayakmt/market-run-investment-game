@@ -1,5 +1,7 @@
+from fetcher import download_assets
+
 def main():
-    pass
+    download_assets()
 
 if __name__ == "__main__":
     main()

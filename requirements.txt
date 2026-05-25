@@ -1,0 +1,5 @@
+pyarrow
+fastparquet
+yfinance
+pathlib
+tqdm
