@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from config import STARTING_CASH
+from config import STARTING_CASH, MAX_OPEN_ORDERS
 from fees import compute_fee
 from orders import Order
 
@@ -59,6 +59,8 @@ class Portfolio:
         return
     
     def place_limit_order(self, order: Order):
+        if len(self.orders) >= MAX_OPEN_ORDERS:
+            raise ValueError("Max open orders reached. Wait until some get filled or cancel.")
         if order.limit_price is None:
             raise ValueError("Limit order requires limit_price.")
 
