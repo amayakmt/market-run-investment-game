@@ -93,7 +93,7 @@ class Portfolio:
             self.positions[order.ticker].reserved_quantity -= order.quantity
         
         self.orders.remove(order)
-        print(f'Limit order {order_id} successfully cancelled.')
+        print(f'Limit order {order_id} cancelled / expired.')
         return
 
     # FILL ORDER --------------------------------------------------------------------------------
@@ -113,6 +113,27 @@ class Portfolio:
 
         print(f'Limit order for {order.order_id} was filled at ${price}.')
         self.orders.remove(order)
+        return
+
+    # CHECK LIMIT ORDERS WEEKLY ----------------------------------------------------------------
+
+    def tick_week(self, bars: dict[str, dict[str, float]]) -> None:
+        for order in list(self.orders):
+            if order.ticker not in bars:
+                continue
+
+            bar = bars[order.ticker]
+            if order.side == "BUY":
+                fillable = bar["low"] <= order.limit_price
+            else:
+                fillable = bar["high"] >= order.limit_price
+                
+            if fillable:
+                self.fill_order(order, order.limit_price)
+            else:
+                order.weeks_until_expiry -= 1
+                if order.weeks_until_expiry <= 0:
+                    self.cancel_order(order.order_id)
         return
 
     # BUY|SELL SHARES ----------------------------------------------------------------------
